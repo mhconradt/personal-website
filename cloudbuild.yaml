@@ -9,7 +9,7 @@ steps:
       - deployment
       - blog
       - --type=json
-      - '-p ''{"spec":{"containers":[{"name":"gcr.io/personal-251201/blog:${TAG_NAME}"}]}}'''
+      - '-p ''{"spec":{"containers":[{"name": "blog", "image":"gcr.io/personal-251201/blog:${TAG_NAME}"}]}}'''
     env:
       - CLOUDSDK_COMPUTE_ZONE=us-central1-a
       - CLOUDSDK_CONTAINER_CLUSTER=blog
