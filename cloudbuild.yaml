@@ -10,5 +10,5 @@ steps:
       - blog
       - '-p ''{"spec":{"containers":[{"name":"gcr.io/personal-251201/blog:${TAG_NAME}"}]}}'''
     env:
-      - CLOUDSDK_COMPUTE_ZONE=us-central1-f
+      - CLOUDSDK_COMPUTE_ZONE=us-central1-a
       - CLOUDSDK_CONTAINER_CLUSTER=blog
