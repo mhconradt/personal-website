@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Max Conradt</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+<header class="header">
+    <nav class="header-nav">
+        <a class="header-logo" href="/">Max Conradt</a>
+        <button class="header-menu-button">
+            <span class="header-menu-button-inner"></span>
+        </button>
+        <ul class="header-menu-list">
+            <li class="header-menu-list-item">
+                <a href="/about">About</a>
+            </li>
+            <li class="header-menu-list-item">
+                <a href="/articles">Low-Latency Blog</a>
+            </li>
+            <li class="header-menu-list-item">
+                <a href="/resume">Resume</a>
+            </li>
+            <li class="header-menu-list-item header-menu-list-item-search">
+                <form class="header-search" role="search" action="/articles">
+                    <input
+                            class="header-search-input"
+                            type="search"
+                            name="term"
+                            placeholder="Search"
+                            aria-label="search"
+                            autocapitalize="off"
+                            autocomplete="off"
+                            spellcheck="false"
+                            required
+                    />
+                    <input type="hidden" name="index" value="text" />
+                    <button class="header-search-submit">
+                        <svg class="header-search-submit-icon" width="24" height="24" viewBox="0 0 24 24"><title>Search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+                    </button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main id="page">
+    {{ template "content" . }}
+</main>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{{ define "language" }}
+    <li class="about-language">
+        <h3>{{ .Name }}</h3>
+        <p><strong>Skill Level: </strong>{{ .SkillLevel }}</p>
+        <h4>How I've Used It: </h4>
+        <ul>
+            {{ range .Usages }}
+                <li>
+                    <span>
+                        {{ .Name }}
+                    </span>
+                    <p>{{ .Description }}</p>
+                </li>
+            {{ end }}
+        </ul>
+        <p><strong>Opinion: </strong>{{ .Opinion }}</p>
+    </li>
+{{ end }}

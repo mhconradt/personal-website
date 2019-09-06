@@ -1,0 +1,59 @@
+{{ define "content" }}
+    <section class="about-page">
+        <section id="article-header">
+            <article>
+                <h1>
+                    About Me
+                </h1>
+            </article>
+        </section>
+        <div class="about-content">
+            <p>
+                Hello, I'm Max. I'm a software engineer in Kansas City who is passionate about building high-performance, scalable systems people enjoy using.
+                I'm a radically open-minded critical thinker and value viewing situations, problems and concepts from as many points of view as possible.
+                Working on interesting problems with other passionate, motivated and capable people, both colleagues and friends.
+            </p>
+            <p>
+                My desire for my talent and effort to have as large an impact as possible lead me to learn Python in January of 2018.
+                I did not think I would be a good programmer because I struggled to identify with the cultural stereotypes of programmers, but quickly fell in love and was hungry for more.
+                I began learning JavaScript the summer before beginning college aiming to build mobile applications with React Native.
+            </p>
+            <p>
+                I kicked some ass at college for one semester, making a few close friends, being elected co-president of my residence hall and making the honor roll.
+                Sounds great, right? Wrong. I was not challenged by all but two people surrounding me, and saw myself coasting through for another three and a half years with minimal personal growth.
+                Early in the semester, I was offered an internship at Tile Five, a company that makes a platform for climbing gyms, cross-fit and yoga studios, and worked my ass off.
+                Working on actual systems was much more fulfilling than learning the JavaScript framework of the week on Codecademy.
+                Given my enjoyment of this internship and my dissatisfaction with college, it took little convincing to get me to accept a job offer in December.
+            </p>
+            <p>
+                As my colleagues would confirm, there were growing pains early on. I had to learn to write clean, well-organized code, and thoroughly test it.
+                If you think your code will work the first time, it's not going to.
+                However, my ability to scale even the steepest of learning curves has allowed me to become a skilled engineer.
+                At work, I bring creative solutions and a desire to do things the right way to the table.
+                Building stuff that "just works" is not good enough, in my opinion.
+            </p>
+            <p>
+                <strong>These are my criteria for a good program: </strong>
+            </p>
+            <ul>
+                <li>
+                    A person familiar with the syntax of the language should be able to understand what it does in one minute.
+                    This also means that if I come back to it six months later, it won't take long to figure it out.
+                    This comes from good variable and function names, as well as separation of logic between functions.
+                </li>
+                <li>
+                    The big-O notation should be optimal or at least reasonable, especially when the operation in question is I/O, like a database query or API call.
+                </li>
+                <li>
+                    If anything beyond a builtin operation, like arithmetic or string concatenation, is duplicated, the logic should be pulled out into its own function.
+                    Say I want to change the format in which dates are displayed. I should be able to change a single function and call it a day.
+                </li>
+                <li>
+                    The inverse holds true.
+                    Code should also follow the <a href="https://en.wikipedia.org/wiki/Single_responsibility_principle">single-responsibility principle</a>.
+                </li>
+            </ul>
+            {{ template "languages" . }}
+        </div>
+    </section>
+{{ end }}

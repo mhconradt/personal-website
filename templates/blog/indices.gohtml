@@ -1,0 +1,16 @@
+{{ define "indices" }}
+<div class="blog-indexes">
+    <h3>Search By</h3>
+    <ul class="blog-indexes-list">
+        <li class="blog-indexes-list-item">
+            <a href="/articles" {{if eq .Index "date" }} class="index-list-item-el selected-index-list-item" {{else}} class="index-list-item-el" {{end}}>Recent</a>
+        </li>
+        <li class="blog-indexes-list-item">
+            <a href="/articles?index=topic" {{if eq .Index "topic" }} class="index-list-item-el selected-index-list-item" {{else}} class="index-list-item-el" {{end}}>Topics</a>
+        </li>
+        <li class="blog-indexes-list-item">
+            <a href="/articles?index=text" {{if eq .Index "text"}} class="index-list-item-el selected-index-list-item" {{else}} class="index-list-item-el" {{end}}>Keyword</a>
+        </li>
+    </ul>
+</div>
+{{ end }}

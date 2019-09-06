@@ -1,0 +1,10 @@
+{{ define "languages" }}
+    <h2>
+        Programming Languages
+    </h2>
+    <ul>
+        {{ range .Languages }}
+            {{ template "language" . }}
+        {{ end }}
+    </ul>
+{{ end }}

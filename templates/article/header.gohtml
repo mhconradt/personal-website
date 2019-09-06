@@ -1,0 +1,12 @@
+{{ define "header" }}
+    <section id="article-header">
+        <article>
+            <h1>
+                <a href={{ printf "/articles/%v" .ID }}>
+                    {{ .Title }}
+                </a>
+            </h1>
+        </article>
+        <span class="article-info">Posted by Max Conradt{{ .Timestamp.Since }}. {{ .Views }} views.</span>
+    </section>
+{{ end }}

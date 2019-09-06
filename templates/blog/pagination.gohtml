@@ -1,0 +1,10 @@
+{{ define "pagination" }}
+<div class="pagination">
+    {{if ne .Reverse -1 }}
+        <a href={{printf "/articles?index=%v&cursor=%v&term=%v" .Index .Reverse .Term }} class="cursor reverse-cursor"> < </a>
+    {{end}}
+    {{if ne .Forward -1 }}
+        <a href={{printf "/articles?index=%v&cursor=%v&term=%v" .Index .Forward .Term }} class="cursor forward-cursor"> > </a>
+    {{end}}
+</div>
+{{ end }}

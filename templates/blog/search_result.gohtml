@@ -1,0 +1,11 @@
+{{ define "result" }}
+<div class="article-list-item">
+    <h1 class="article-title">
+        <a href={{ printf "/articles/%v" .ID}}>{{ .Title }}</a>
+    </h1>
+    <span class="article-info">Posted by Max Conradt{{ .Timestamp.Since }}</span>
+    <p class="article-preview">
+        {{ .Body }}
+    </p>
+</div>
+{{ end }}

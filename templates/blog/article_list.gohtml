@@ -1,0 +1,17 @@
+{{ define "content" }}
+    <div class="blog">
+        <div class="blog-header">
+            <h2 class="blog-header-text">
+                Blog
+            </h2>
+        </div>
+        <div class="article-search">
+            {{ template "indices" .Cursor }}
+            <div class="paginated-results">
+                {{ template "search_bar" . }}
+                {{ template "search_results" .Results }}
+                {{ template "pagination" .Cursor }}
+            </div>
+        </div>
+    </div>
+{{end}}

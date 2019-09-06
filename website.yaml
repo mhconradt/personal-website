@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2019-09-04T14:09:32Z"
+  generation: 1
+  labels:
+    run: blog
+  name: blog
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      run: blog
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: blog
+    spec:
+      containers:
+        - image: gcr.io/personal-251201/blog:v1.0.4
+          imagePullPolicy: Always
+          name: blog
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources: {}
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
