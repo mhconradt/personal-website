@@ -9,7 +9,7 @@ steps:
       - deployment
       - blog
       - --type=json
-      - '-p=''[{\"op\": \"replace\", \"path\": \"/spec/containers/0/image\", \"value\":\"gcr.io/$PROJECT_ID/blog:${TAG_NAME}\"}]'''
+      - '-p=''[{"op": "replace", "path": "/spec/containers/0/image", "value":"gcr.io/$PROJECT_ID/blog:${TAG_NAME}"}]'''
       - --v=8
     env:
       - CLOUDSDK_COMPUTE_ZONE=us-central1-a
