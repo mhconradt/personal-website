@@ -5,12 +5,10 @@ steps:
     args: [ 'push', 'gcr.io/$PROJECT_ID/blog:${TAG_NAME}' ]
   - name: 'gcr.io/cloud-builders/kubectl'
     args:
-      - patch
-      - deployment
-      - blog
-      - --type=json
-      - '-p=''[{"op": "replace", "path": "/spec/containers/0/image", "value":"gcr.io/$PROJECT_ID/blog:${TAG_NAME}"}]'''
-      - --v=8
+      - set
+      - image
+      - deployment/blog
+      - blog='gcr.io/$PROJECT_ID/blog:${TAG_NAME}'
     env:
       - CLOUDSDK_COMPUTE_ZONE=us-central1-a
       - CLOUDSDK_CONTAINER_CLUSTER=blog
