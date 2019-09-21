@@ -9,7 +9,7 @@
             {{ template "indices" .Cursor }}
             <div class="paginated-results">
                 {{ template "search_bar" . }}
-                {{ template "search_results" .Results }}
+                {{ template "search_results" . }}
                 {{ template "pagination" .Cursor }}
             </div>
         </div>

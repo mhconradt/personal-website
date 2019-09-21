@@ -1,35 +1,42 @@
 package article
 
 import (
-	"encoding/json"
 	"fmt"
+	"github.com/golang/protobuf/proto"
 	"github.com/gorilla/mux"
 	"github.com/mhconradt/personal_website/cfg"
 	"github.com/mhconradt/personal_website/pages"
+	"io/ioutil"
 	"net/http"
+	"time"
 )
 
-type Article struct {
-	ID        int      `json:"id"`
-	Timestamp pages.Timestamp    `json:"timestamp,omitempty"`
-	Title     string   `json:"title,omitempty"`
-	Body      string   `json:"body,omitempty"`
-	Topics    []string `json:"topics,omitempty"`
-	Views     int      `json:"views,omitempty"`
+func (m Article) Since() string {
+	return pages.Since(m.Timestamp)
 }
 
-func GetArticle(r *http.Request) (Article, int) {
-	a := Article{}
+func GetArticle(r *http.Request) (*Article, int) {
+	a := new (Article)
 	v := mux.Vars(r)
 	articleId := v["id"]
-	subpath := fmt.Sprintf("/articles/%v", articleId)
-	url := cfg.ApiEndpoint + subpath
+	route := fmt.Sprintf("/articles/%v", articleId)
+	url := cfg.ApiEndpoint + route
 	res, err := http.Get(url)
 	if err != nil {
 		return a, 404
 	}
-	err = json.NewDecoder(res.Body).Decode(&a)
-	fmt.Println(a)
+	b, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return a, 500
+	}
+	start := time.Now().UnixNano()
+	err = proto.Unmarshal(b, a)
+	end := time.Now().UnixNano()
+	if err != nil {
+		return a, 500
+	}
+	fmt.Println("article decoding took: ", end - start)
+	err = res.Body.Close()
 	if err != nil {
 		return a, 500
 	}

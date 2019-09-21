@@ -1,27 +1,53 @@
 package blog
 
 import (
-	"encoding/json"
 	"fmt"
+	"github.com/golang/protobuf/proto"
 	"github.com/mhconradt/personal_website/cfg"
+	"github.com/mhconradt/personal_website/pages"
+	"io/ioutil"
 	"net/http"
+	"time"
 )
 
-func RequestArticles(r *http.Request) (SearchResults, int) {
-	sr := SearchResults{}
-	fqp := cfg.ApiEndpoint + r.RequestURI
+func (m ArticleSnippet) Since() string {
+	fmt.Println("called")
+	return pages.Since(m.Timestamp)
+}
+
+func GetRoute(r *http.Request) string {
+	q := r.URL.Query()
+	_, ok := q["term"]
+	if ok {
+		return r.RequestURI
+	}
+	q.Set("index", "date")
+	return "/articles?" + q.Encode()
+}
+
+func RequestArticles(r *http.Request) (sr SearchResults, code int) {
+	fqp := cfg.ApiEndpoint + GetRoute(r)
 	fmt.Println(fqp)
-	req, err := http.Get(fqp)
+	res, err := http.Get(fqp)
 	if err != nil {
 		fmt.Println(err)
 		return sr, 404
 	}
-	err = json.NewDecoder(req.Body).Decode(&sr)
+	start := time.Now().UnixNano()
+	buf, err := ioutil.ReadAll(res.Body)
 	if err != nil {
-		fmt.Println(err)
 		return sr, 500
 	}
-	fmt.Println("results: ", sr)
+	if err = proto.Unmarshal(buf, &sr); err != nil {
+		return sr, 500
+	}
+	end := time.Now().UnixNano()
+	fmt.Println("Decode duration: ", end - start)
+	// Word limit on index
+	if err = res.Body.Close(); err != nil {
+		return sr, 500
+	}
+	fmt.Println(sr.Cursor.Term)
 	sr.Cursor.Index = func(m map[string][]string, k, d string) string {
 		if v, ok := m[k]; ok && len(v) > 0 {
 			return v[0]

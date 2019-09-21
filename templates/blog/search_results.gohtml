@@ -1,9 +1,9 @@
 {{ define "search_results" }}
 <div class="search-results">
-    {{ range . }}
+    {{ range .Results }}
         {{ template "result" . }}
     {{ else }}
-        {{ template "empty" . }}
+        {{ template "empty" .Cursor }}
     {{ end }}
 </div>
 {{ end }}

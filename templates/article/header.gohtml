@@ -2,11 +2,11 @@
     <section id="article-header">
         <article>
             <h1>
-                <a href={{ printf "/articles/%v" .ID }}>
+                <a href={{ printf "/articles/%v" .Id }}>
                     {{ .Title }}
                 </a>
             </h1>
         </article>
-        <span class="article-info">Posted by Max Conradt{{ .Timestamp.Since }}. {{ .Views }} views.</span>
+        <span class="article-info">Posted by Max Conradt {{ .Since }}. {{ .Views }} views.</span>
     </section>
 {{ end }}

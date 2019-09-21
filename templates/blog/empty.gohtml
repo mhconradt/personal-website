@@ -1,5 +1,10 @@
 {{ define "empty" }}
 <h1>
-    No results found!
+    {{ if eq .Index "topic" }}
+        No results found for topic "{{ .Term }}"
+    {{else}}
+        No results found for keyword "{{ .Term }}"
+    {{end}}
+
 </h1>
 {{ end }}

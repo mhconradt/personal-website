@@ -29,8 +29,8 @@ func GetGolang() Language {
 	}
 	dm := Usage{
 		Name: "Data Mining",
-		Description: "The language's concurrency model is great for starting up thousands of processes and pipelining the results of one stage to the next. " +
-			"This makes the language an obvious choice for the data collection phase of data-mining. ",
+		Description: "The language's concurrency model is great for starting up thousands of processes and outputting the results of one stage to the next. " +
+			"This makes the language an obvious choice for the data collection and pre-processing phases of data-mining. ",
 	}
 	site := Usage{
 		Name: "This Website",
@@ -66,7 +66,7 @@ func GetPython() Language {
 	}
 	algorithms := Usage{
 		Name: "Algorithms and Data Structures",
-		Description: "Python's expressivity makes it easy to think about problems in the context of the language. " +
+		Description: "Python's expressiveness makes it easy to think about problems in the context of the language. " +
 			"If I am learning about an algorithm or data structure, such as DFS and BFS and radix-tries, respectively, Python is my first choice. ",
 	}
 	return Language{

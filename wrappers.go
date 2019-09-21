@@ -9,7 +9,7 @@ import (
 	"net/http"
 )
 
-func WrapGetHandler(h func(r *http.Request) (article.Article, int), subtemplates ...string) func(w http.ResponseWriter, r *http.Request) {
+func WrapGetHandler(h func(r *http.Request) (*article.Article, int), subtemplates ...string) func(w http.ResponseWriter, r *http.Request) {
 	withMain := append([]string{"templates/main.gohtml"}, subtemplates...)
 	t, err := template.ParseFiles(withMain...)
 	if err != nil {

@@ -1,9 +1,9 @@
 {{ define "result" }}
 <div class="article-list-item">
     <h1 class="article-title">
-        <a href={{ printf "/articles/%v" .ID}}>{{ .Title }}</a>
+        <a href={{ printf "/articles/%v" .Id}}>{{ .Title }}</a>
     </h1>
-    <span class="article-info">Posted by Max Conradt{{ .Timestamp.Since }}</span>
+    <span class="article-info">Posted by Max Conradt{{ .Since }}</span>
     <p class="article-preview">
         {{ .Body }}
     </p>
