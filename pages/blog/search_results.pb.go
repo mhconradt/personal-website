@@ -6,6 +6,7 @@ package blog
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
+	"html/template"
 	math "math"
 )
 
@@ -24,7 +25,7 @@ type ArticleSnippet struct {
 	Id                   int32    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Title                string   `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
 	Timestamp            int32    `protobuf:"varint,3,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
-	Body                 string   `protobuf:"bytes,4,opt,name=body,proto3" json:"body,omitempty"`
+	Body                 template.HTML   `protobuf:"bytes,4,opt,name=body,proto3" json:"body,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -76,7 +77,7 @@ func (m *ArticleSnippet) GetTimestamp() int32 {
 	return 0
 }
 
-func (m *ArticleSnippet) GetBody() string {
+func (m *ArticleSnippet) GetBody() template.HTML {
 	if m != nil {
 		return m.Body
 	}
